@@ -1,0 +1,32 @@
+/* Styles for Header component */
+
+.Nav {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    -webkit-transition: height 0.2s ease-in-out;
+    transition: height 0.2s ease-in-out;
+    height: 77px;
+  }
+
+  .Nav-menus {
+    display: flex;
+    flex-direction: row;
+    height: 77px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 26px 40px;
+  }
+
+  .Nav-brand-logo {
+    display: block;
+    background-image: url(../../brand.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 256px;
+    text-indent: -1000%
+  }
