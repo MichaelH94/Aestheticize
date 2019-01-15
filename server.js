@@ -1,72 +1,86 @@
-require('dotenv').config()
-const mongoose = require("mongoose");
-const express = require('express');
-const app = express();
-const path = require('path');
-const Auth0Strategy = require('passport-auth0')
-const passport = require('passport');
-const session = require('express-session');
+const express = require("express")
+const graphqlHTTP = require("express-graphql");
+const cors = require("cors");
+const { buildSchema } = require("graphql")
 
-const PORT = process.env.PORT || 3000;
+let schema = buildSchema(`
+      type User {
+        id : String!
+        username : String!
+        avatar : String!
+      }
+      type Post {
+          id: String!
+          user: User!
+          caption : String!
+          image : String!
+      }
+      type Query{
+        user(id: String) : User!
+        post(user_id: String, post_id: String) : Post!
+        posts(user_id: String) : [Post]
+      }
+    `);
 
-const strategy = new Auth0Strategy({
-  domain: process.env.AUTH0DOMAIN,
-  clientID: process.env.AUTH0ID, 
-  clientSecret: process.env.AUTH0SECRET,
-  callbackURL: '/callback',
-  state: false
-},(accessToken, refreshToken, extraParams, profile, done) => 
- {
-   return done(null, profile);
- });
+    let userslist = {
+      a: {
+        id: "a",
+        username: "Mike",
+        avatar: "https://i.imgur.com/Rqoc2Zh.jpg"
+      },
+      b: {
+        id: "b",
+        username: "Ian",
+        avatar:
+          "https://i.imgur.com/JMCi04X.jpg"
+      }
+    };
 
- passport.use(strategy);
+    let postslist = {
+      a: {
+        a: {
+          id: "a",
+          user: userslist["a"],
+          caption: "Here's a placeholder image.",
+          image: "https://i.imgur.com/JynDHo7.jpg"
+        },
+        b: {
+          id: "b",
+          user: userslist["a"],
+          caption: "Here's a placeholder image.",
+          image:
+            "https://i.imgur.com/ti6Kedj.png"
+        },
+        c: {
+          id: "c",
+          user: userslist["a"],
+          caption: "Here's a placeholder image.",
+          image: "https://i.imgur.com/0DuPjX6.jpg"
+        }
+      }
+    };
 
- passport.serializeUser((user,done) => {
-   done(null, user)
- })
+    let root = {
+      user: function({ id }) {
+        return userslist[id];
+      },
+      post: function({ user_id , post_id }) {
+        return postslist[user_id][post_id];
+      },
+      posts: function({ user_id }){
+        return Object.values(postslist[user_id]);
+      }
+    };
 
- passport.deserializeUser((user,done) => {
-  done(null, user)
-})
+    let app = express();
+    app.use(cors());
+    app.use(
+      "/graphql",
+      graphqlHTTP({
+        schema: schema,
+        rootValue: root,
+        graphiql: true
+      })
+    );
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
-app.use(passport.initialize())
-
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
-
-app.listen(PORT, () => {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
-
-
-// ROUTES 
-
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/login' }, ),
-  (req, res)=> {
-    if (!req.user) {
-      throw new Error('user null');
-    }
-    res.redirect("/");
-  }
-);
-
-app.get('/login',
-  passport.authenticate('auth0', {}), (req, res) => {
-  res.redirect("/");
-});
-
-app.get('/', (req,res) =>{
-  res.sendFile(path.join(__dirname+'/public/index.html'))
-});
+    app.listen(3000);
