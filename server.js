@@ -102,16 +102,19 @@ let schema = buildSchema(`
     app.post('/newpost', multipartMiddleware, (req,res) => {
       let post = {
         user : {
-          username : req.body.name,
+          nickname : req.body.name,
           avatar : req.body.avatar
         },
         image : req.body.image,
         caption : req.body.caption
       }
-
+       
       pusher.trigger("posts-channel", "new-post", { 
         post 
       });
+    
+      return res.json({status : "Post created"});
+    });
 
 
 
