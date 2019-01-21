@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.23",
+    "auth0-js": "^9.9.0",
     "body-parser": "^1.18.3",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
@@ -20,6 +21,7 @@
     "pusher-js": "^4.3.1",
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3"
   },
