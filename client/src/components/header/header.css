@@ -30,3 +30,39 @@
     width: 256px;
     text-indent: -1000%
   } 
+
+  button {
+    background-image: url(./sun.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 32px;
+    width: 32px;
+    border: none;
+    position: fixed;
+    display: block;
+    background-color: transparent;
+  }
+  
+  button span {
+    display: none;
+  }
+
+  .dayMode {
+    background-image: url(./sun.png);
+    right: 48px;
+  }
+
+  .nightMode {
+    background-image: url(./moon.png);
+    right: 16px;
+  }
+
+  .sidebar {
+    border: 1px solid;
+    height: 70px;
+    width: 120px;
+    position: fixed;
+    display: block;
+    right: 0;
+    top: 0;
+  }

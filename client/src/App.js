@@ -11,6 +11,7 @@ class App extends Component {
     <Header />
       <section className="App-main">
         <Route exact path="/" component={Post}/>
+        <Route exact path="/" component={Post}/>
       </section>
 
     </div>
