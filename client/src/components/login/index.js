@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import "./login.css";
 import logo from '../../brand.png';
@@ -17,10 +18,6 @@ export default class Login extends Component {
   
     }
   
-    validateForm() {
-      return this.state.username.length > 0 && this.state.password.length > 0;
-    }
-  
     handleChange(event) {
       this.setState({
         [event.target.name]: event.target.value
@@ -32,7 +29,7 @@ export default class Login extends Component {
       console.log(this.state.username + " " + this.state.password)
 
       axios
-          .post('/user/login', {
+          .post('/login/', {
               username: this.state.username,
               password: this.state.password
           })
@@ -47,17 +44,19 @@ export default class Login extends Component {
                   })
                   // update the state to redirect to home
                   this.setState({
-                      redirectTo: '/'
+                      redirectTo: '/home'
                   })
               }
           }).catch(error => {
               console.log('login error: ')
               console.log(error);
-              
           })
   }
 
     render() {
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
       return (
         <div className="container">
             <div className="Login">
@@ -104,4 +103,5 @@ export default class Login extends Component {
         </div>
       );
     }
+}
   }

@@ -17,7 +17,7 @@ const app = express();
 
 
 // Database connection
-let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoaesthetics";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
@@ -35,9 +35,15 @@ app.use(express.static(path.join(__dirname, '../client/public')))
 // Express-session
 app.use(session({
     secret: 'zxcv',
+    store: new MongoStore({ mongooseConnection: db }),
     resave: false, 
-    saveUnitialized: false
+    saveUninitialized: false
 }));
+
+// Heroku configuration
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+  }
 
 // Passport
 app.use(passport.initialize());
