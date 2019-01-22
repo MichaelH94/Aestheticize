@@ -2,7 +2,6 @@
   "name": "aestheticize",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
@@ -45,5 +44,6 @@
   "bugs": {
     "url": "https://github.com/MichaelH94/Aestheticize/issues"
   },
-  "homepage": "https://github.com/MichaelH94/Aestheticize#readme"
+  "homepage": "https://github.com/MichaelH94/Aestheticize#readme",
+  "proxy": "http://localhost:3001"
 }

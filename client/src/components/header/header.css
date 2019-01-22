@@ -31,7 +31,7 @@
     text-indent: -1000%
   } 
 
-  button {
+  /* button {
     background-image: url(./sun.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -42,10 +42,10 @@
     display: block;
     background-color: transparent;
   }
-  
-  button span {
+   */
+  /* button span {
     display: none;
-  }
+  } */
 
   .dayMode {
     background-image: url(./sun.png);

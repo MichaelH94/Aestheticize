@@ -4,9 +4,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const path = require("path");
+const passport = require('passport');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
 
-const PORT = process.env.PORT || 3000;
+// Route initializiations 
+const user = require('./routes/user.js')
+
+
+const PORT = process.env.PORT || 3001;
 const app = express();
+
 
 // Database connection
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
@@ -22,17 +30,24 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(express.json());
-app.use(express.static(
-    "public"
-));
+app.use(express.static(path.join(__dirname, '../client/public')))
 
-// app.use(require("./controllers/ctrl.js"))
-app.get('/api/hello', (req, res) => {
-    res.send({ express: 'Hello From Express' });
-  });
+// Express-session
+app.use(session({
+    secret: 'zxcv',
+    resave: false, 
+    saveUnitialized: false
+}));
 
-  app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+// Passport
+app.use(passport.initialize());
+app.use(passport.session())
+
+app.use('/user', user)
+
+// ROUTES
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../client/public/index.html'))
   });
 
 app.listen(PORT, ()=> {

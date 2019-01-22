@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import "./post.css";
 
 class Post extends Component {
-            constructor(props) {
-                super(props);
-            }
+    
     render() {
         const username = this.props.username;
         const avatar = this.props.avatar;
         const image = this.props.image;
         const caption = this.props.caption;
-
 
         return <article className="Post" ref="Post">
         <header>
