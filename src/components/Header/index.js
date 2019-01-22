@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./header.css";
 
 // Aestheticize header / logo - Should be present on all pages.
 
@@ -20,4 +20,4 @@ class Header extends React.Component{
 }
 
 
-export default Header;
+export default Header; 

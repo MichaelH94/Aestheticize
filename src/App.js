@@ -1,105 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header/';
-import Post from './components/Post/'
-import Posts from './components/Posts/'
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from "react-apollo";
-import Pusher from 'pusher-js';
-import { Navbar, Button } from 'react-bootstrap';
+import Header from './components/header';
+import Post from './components/post'
 
-const client = new ApolloClient({
-  uri : "http://localhost:3000"
-});
-
-class App extends Component {{
-  goTo(route) {
-    this.props.history.replace(`/${route}`)
-  }
-
-  login() {
-    this.props.auth.login();
-  }
-
-  logout() {
-    this.props.auth.logout();
-  }
-
-  componentDidMount() {
-    const { renewSession } = this.props.auth;
-
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      renewSession();
-    }
-  }
-
+class App extends Component {
   render() {
-    const { isAuthenticated } = this.props.auth;
+    return <div className="App">
+    <Header />
 
-    return (
-      <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
-            </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
-            {
-              !isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </Button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </Button>
-                )
-            }
-          </Navbar.Header>
-        </Navbar>
-      </div>
-    );
+      <section className="App-main">
+      <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Here's a placeholder image." image="https://i.imgur.com/JynDHo7.jpg" />
+      <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="#zxcv wins again!" image="https://i.imgur.com/ti6Kedj.png" />
+      <Post username="Ian" avatar="https://i.imgur.com/JMCi04X.jpg" caption=":)" image="https://i.imgur.com/0DuPjX6.jpg" />
+      </section>
+
+    </div>
+
   }
 }
 
 export default App;
-
-
-// constructor(){
-//   super();
-
-//   this.pusher = new Pusher("476f827739fd8fae9689", {
-//    cluster: 'us2',
-//    encrypted: true
-//   });
-// }
-
-// render() {
-//   return (
-//     <ApolloProvider client={client}>
-//       <div className="App">
-//         <Header />
-//         <section className="App-main">
-//           <Posts pusher={this.pusher} apollo_client={client}/>
-//         </section>
-//       </div>
-//     </ApolloProvider>
-//   );
-// }
