@@ -5,6 +5,7 @@ import axios from 'axios';
 import "./login.css";
 import logo from '../../brand.png';
 
+
 export default class Login extends Component {
     constructor() {
         super()
@@ -20,7 +21,7 @@ export default class Login extends Component {
   
     handleChange(event) {
       this.setState({
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.valuec
       });
     }
   
@@ -28,8 +29,7 @@ export default class Login extends Component {
       event.preventDefault()
       console.log(this.state.username + " " + this.state.password)
 
-      axios
-          .post('/login/', {
+      axios.post('/user/login', {
               username: this.state.username,
               password: this.state.password
           })
@@ -51,6 +51,11 @@ export default class Login extends Component {
               console.log('login error: ')
               console.log(error);
           })
+  }
+
+  showCreate(event) {
+    event.preventDefault();
+    this.state.redirectTo ="/create"
   }
 
     render() {
@@ -94,14 +99,15 @@ export default class Login extends Component {
                     block
                     bsSize="large"
                     type="submit"
+                    onClick={this.showCreate}
                 >
                 Create Account
                 </Button>
             </form>
-
+            
             </div>
         </div>
-      );
+      )
     }
 }
   }
