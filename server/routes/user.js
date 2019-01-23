@@ -46,15 +46,15 @@ router.post('/login', (req, res) => {
 //     if (err) return res.json(err)
 //     res.json(savedUser)
 
-// router.get('/', (req, res, next) => {
-//     console.log('===== user!!======')
-//     console.log(req.user)
-//     if (req.user) {
-//         res.json({ user: req.user })
-//     } else {
-//         res.json({ user: null })
-//     }
-// })
+router.get('/', (req, res, next) => {
+    console.log('===== user!!======')
+    console.log(req.user)
+    if (req.user) {
+        res.json({ user: req.user })
+    } else {
+        res.json({ user: null })
+    }
+})
 
 // router.post('/logout', (req, res) => {
 //     if (req.user) {

@@ -1,50 +1,103 @@
 import React, { Component } from "react";
-import { Button, Modal } from "react-bootstrap"
-
+import { Button, FormGroup, FormControl } from "react-bootstrap"
+import logo from '../../brand.png';
+import './create.css';
 export default class Create extends Component {
-    constructor(props, context) {
-      super(props, context);
-  
-      this.handleHide = this.handleHide.bind(this);
-  
-      this.state = {
-        show: false
-      };
-    }
-  
-    handleHide() {
-      this.setState({ show: false });
-    }
+
     render() {
       return (
-        <div className="modal-container" style={{ height: 200 }}>
-          <Button
-            bsStyle="primary"
-            bsSize="large"
-            onClick={() => this.setState({ show: true })}
-          >
-            Launch contained modal
-          </Button>
-  
-          <Modal
-            show={this.state.show}
-            onHide={this.handleHide}
-            container={this}
-            aria-labelledby="contained-modal-title"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title">
-                Contained Modal
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              Elit est explicabo ipsum eaque dolorem blanditiis doloribus sed id
-              ipsam, beatae, rem fuga id earum? Inventore et facilis obcaecati.
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.handleHide}>Close</Button>
-            </Modal.Footer>
-          </Modal>
+        <div className="container">
+            <div className="Create">
+
+            <form onSubmit={this.handleSubmit}>
+            <img src={logo} />
+
+                <FormGroup controlId="password" bsSize="large">
+                <h2>Welcome to your Aestheticize account creation form. Aestheticize is driven by its users, so once you've got your account
+                  created, you can choose what content you upload. For now, we'll ask a few basic questions in order to get your connections set up. 
+                  Please fill out the information below.
+                </h2>
+                <h5>Choose a username. Something unique.</h5>
+                <FormControl
+                    autoFocus
+                    placeholder="Username"
+                    name="username"
+                    type="username"
+
+                />
+                </FormGroup>
+
+                <h5>Enter a secure password you can remember.</h5>
+                <FormGroup controlId="password" bsSize="large">
+                <FormControl
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                />
+                </FormGroup>
+                <h5>How old are you?</h5>
+                <FormGroup controlId="age" bsSize="large">
+                <FormControl
+                    placeholder="18"
+                    type="number"
+                    name="age"
+                />
+                </FormGroup>
+
+                <h5>Next, we'll need an avatar. It doesn't have to be you. Use a direct link.</h5>
+                <FormGroup controlId="avatar" bsSize="large">
+                <FormControl
+                    placeholder="i.imgur.com/example"
+                    type="text"
+                    name="avatar"
+                />
+                </FormGroup>
+
+                <h4>Aestheticize generates a starter profile in order to get you some connections immediately, so let's get some of your interests.</h4>
+
+                  <h5>What's your favorite band/artist?</h5>
+                <FormGroup controlId="music" bsSize="large">
+                <FormControl
+                    placeholder="Radiohead"
+                    type="text"
+                    name="music"
+                />
+                </FormGroup>
+
+                <h5>What's your favorite movie?</h5>
+                <FormGroup controlId="movie" bsSize="large">
+                <FormControl
+                    placeholder="The Godfather"
+                    type="text"
+                    name="movie"
+                />
+                </FormGroup>
+
+                <h5>What's your favorite video game?</h5>
+                <FormGroup controlId="game" bsSize="large">
+                <FormControl
+                    placeholder="Super Smash Bros"
+                    type="text"
+                    name="game"
+                />
+                </FormGroup>
+                <h4>Once you've got everything filled out, go ahead and create an account and we'll get to work.</h4>
+                <Button className="createAccount"
+                    block
+                    bsSize="large"
+                    type="submit"
+                >
+                Create Account
+                </Button>
+
+                
+                
+            
+
+            </form>
+
+            </div>
+            
         </div>
       );
     }

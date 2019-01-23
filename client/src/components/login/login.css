@@ -18,7 +18,7 @@ body {
   border-radius: 5px;
 }
 
-input {
+.Login input {
   background-color: #238659;
   border: 2px solid black;
   color: white;
@@ -35,7 +35,7 @@ input {
   text-align: center;
 }
 
-.loginbtn {
+.Login button {
   width: 146px;
   height: 40px;
   border: 2px solid black;
@@ -48,7 +48,7 @@ input {
   font-weight: bold;
 }
 
-.loginbtn:hover {
+.Login button:hover {
   background-color: #3d9970;
   opacity: 90%;
   color: black;

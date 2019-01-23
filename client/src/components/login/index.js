@@ -5,23 +5,23 @@ import axios from 'axios';
 import "./login.css";
 import logo from '../../brand.png';
 
-
 export default class Login extends Component {
+
     constructor() {
         super()
         this.state = {
             username: '',
             password: '',
-            redirectTo: null
+            redirectTo: null,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-  
+        this.showCreate = this.showCreate.bind(this)
     }
   
     handleChange(event) {
       this.setState({
-        [event.target.name]: event.target.valuec
+        [event.target.name]: event.target.value
       });
     }
   
@@ -54,9 +54,13 @@ export default class Login extends Component {
   }
 
   showCreate(event) {
+    console.log(this.state.showCreate)
     event.preventDefault();
-    this.state.redirectTo ="/create"
-  }
+    this.setState({
+        redirectTo: "/create"
+    })
+    }
+
 
     render() {
         if (this.state.redirectTo) {
@@ -103,9 +107,11 @@ export default class Login extends Component {
                 >
                 Create Account
                 </Button>
+
             </form>
-            
+
             </div>
+            
         </div>
       )
     }

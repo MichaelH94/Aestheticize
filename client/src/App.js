@@ -5,8 +5,7 @@ import './App.css';
 import Header from './components/header';
 import Post from './components/post';
 import Login from './components/login';
-
-
+import Create from './components/create';
 
 class App extends Component {
   constructor() {
@@ -30,7 +29,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/user').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -55,7 +54,7 @@ class App extends Component {
      return (
        <Router>
       <div className="App">
-       <Header/ >
+       <Header />
        <Post />
        </div>
        </Router>
@@ -65,7 +64,8 @@ class App extends Component {
     return (
         <Router>
         <div className="App">
-        <Login />
+        <Header />
+        <Create />
         </div>
         </Router>
       );
