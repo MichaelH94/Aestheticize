@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from 'axios'
 import './App.css';
 import Header from './components/header';
@@ -51,30 +51,26 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.LoggedIn) {
-     return (
-       <Router>
-      <div className="App">
-       <Header />
-       <Post />
-       </div>
-       </Router>
-     )   
-    } else {
-
     return (
-        <Router>
-        <div className="App">
+      <Router>
+      <div className="App">
+      <Route exact path="/create" component={Create} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/" render={props =>
+      <div>
         <Header />
-        <div className="Main">
-        <Login />
-        </div>
-        <Footer />
-        </div>
-        </Router>
-      );
+        <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Placeholder" image="https://i.imgur.com/4Mitiko.jpg" />
+        <Post username="GifTest" avatar="https://i.imgur.com/b1B1Epb.gif" caption="Gif Test" image="https://i.imgur.com/b1B1Epb.gif" />
+        <Post username="Lydia" avatar="https://i.imgur.com/uaCtrd8.jpg" caption="This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text." image="https://i.imgur.com/uaCtrd8.jpg" />
+        <Post username="Ian" avatar="https://i.imgur.com/PSzU2Si.jpg" caption="Placeholder text" image="https://i.imgur.com/JynDHo7.jpg" />
+        <Footer /> 
+      </div> }/>
+      </div>
+      </Router>
+      
+    )
     }
   }
-}
+
 
 export default App;

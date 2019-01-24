@@ -14,6 +14,7 @@ export default class Login extends Component {
             password: '',
             redirectTo: null,
         }
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.showCreate = this.showCreate.bind(this)
@@ -37,12 +38,10 @@ export default class Login extends Component {
               console.log('login response: ')
               console.log(response)
               if (response.status === 200) {
-                  // update App.js state
                   this.props.updateUser({
                       loggedIn: true,
                       username: response.data.username
                   })
-                  // update the state to redirect to home
                   this.setState({
                       redirectTo: '/home'
                   })
@@ -57,7 +56,7 @@ export default class Login extends Component {
     console.log(this.state.showCreate)
     event.preventDefault();
     this.setState({
-        redirectTo: "/create"
+        redirectTo: "/createPage"
     })
     }
 
@@ -93,7 +92,6 @@ export default class Login extends Component {
                 <Button className="loginbtn"
                     block
                     bsSize="large"
-                    // disabled={!this.validateForm()}
                     onClick={this.handleSubmit}
                     type="submit"
                 >
