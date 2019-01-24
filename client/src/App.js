@@ -67,9 +67,7 @@ class App extends Component {
         <div className="App">
         <Header />
         <div className="Main">
-        <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Placeholder time" image="https://i.imgur.com/JynDHo7.jpg" /> 
-        <Post username="Ian" avatar="https://i.imgur.com/JMCi04X.jpg" caption="Placeholder time" image="https://i.imgur.com/4Mitiko.jpg" /> 
-        <Post username="Lydia" avatar="https://i.imgur.com/uaCtrd8.jpg" caption="gif test" image="https://i.imgur.com/PSzU2Si.jpg" /> 
+        <Login />
         </div>
         <Footer />
         </div>
