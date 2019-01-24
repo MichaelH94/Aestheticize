@@ -1,6 +1,5 @@
 .Create {  
     display: flex;
-    height: 100vh;
     vertical-align: middle;
     justify-content: center;
     flex-direction: column;
@@ -12,8 +11,10 @@
     padding: 8px;
     background-color: #001f3f;
     border-radius: 5px;
-    height: 75vh;
+    height: auto;
     width: 90vh;
+    margin: auto;
+    padding: 3px;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-family: "Times New Roman", Times, serif;
