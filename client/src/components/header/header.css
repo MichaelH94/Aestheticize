@@ -1,8 +1,8 @@
 /* Styles for Header component */
 
 .Nav {
-    background-color: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+    background-color: #001f3f;
+    border-bottom: 1px black solid;
     position: fixed;
     top: 0;
     width: 100%;
@@ -30,22 +30,6 @@
     width: 256px;
     text-indent: -1000%
   } 
-
-  /* button {
-    background-image: url(./sun.png);
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    height: 32px;
-    width: 32px;
-    border: none;
-    position: fixed;
-    display: block;
-    background-color: transparent;
-  }
-   */
-  /* button span {
-    display: none;
-  } */
 
   .dayMode {
     background-image: url(./sun.png);

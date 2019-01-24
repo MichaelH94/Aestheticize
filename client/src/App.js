@@ -6,6 +6,7 @@ import Header from './components/header';
 import Post from './components/post';
 import Login from './components/login';
 import Create from './components/create';
+import Footer from './components/footer';
 
 class App extends Component {
   constructor() {
@@ -65,7 +66,12 @@ class App extends Component {
         <Router>
         <div className="App">
         <Header />
-        <Create />
+        <div className="Main">
+        <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Placeholder time" image="https://i.imgur.com/JynDHo7.jpg" /> 
+        <Post username="Ian" avatar="https://i.imgur.com/JMCi04X.jpg" caption="Placeholder time" image="https://i.imgur.com/4Mitiko.jpg" /> 
+        <Post username="Lydia" avatar="https://i.imgur.com/uaCtrd8.jpg" caption="gif test" image="https://i.imgur.com/PSzU2Si.jpg" /> 
+        </div>
+        <Footer />
         </div>
         </Router>
       );

@@ -1,47 +1,66 @@
 .Post {
     border-radius: 3px;
-    border: 2px solid #3B3B3B;
-    background-color: #fff;
-    margin-bottom: 60px;
-    margin-left : 20%;
-    margin-right: 20%;
+    border: 3px solid black;
+    background-color: #206060;
+    margin-bottom: 5%;
+    margin-left: 20%;
+    margin-right: 35%;
     margin-top: 5%;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    font-family: "Times New Roman", Times, serif;
   }
+
   .Post-user {
     display: flex;
     padding: 16px;
     align-items: center;
   }
+
   .Post-user-avatar {
     width: 30px;
     height: 30px;
   }
+
   .Post-user-avatar img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    border: 1px solid black;
   }
+  
   .Post-user-username {
     margin-left: 12px;
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
   }
-  .Post-image-bg {
-    background-color: #efefef;
-  }
+
   .Post-image img {
     display: block;
     width: 100%;
   }
+
   .Post-caption {
     padding: 16px 16px;
   }
+
   .Post-caption strong {
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
   }
+
   .vjs-fade-out {
     display: none;
     visibility: hidden;
     opacity: 0;
   }
+
+  @media only screen and (max-width: 600px) {
+    .Post {
+      margin-bottom: 60px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20%;
+
+    }
+}
