@@ -1,19 +1,19 @@
 .Create {  
     display: flex;
     vertical-align: middle;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
   }
   
   .Create form {
     border: 3px solid black;
+    display: block;
+    margin: 10vh;
     padding: 8px;
     background-color: #001f3f;
     border-radius: 5px;
     height: auto;
-    width: 90vh;
-    margin: auto;
+    width: 92vh;
     padding: 3px;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
