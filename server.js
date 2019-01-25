@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client/public')))
+app.use(express.static(path.join(__dirname, '/client/public')))
 
 // Express-session
 app.use(session({
@@ -53,7 +53,7 @@ app.use('/user', user)
 
 // ROUTES
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + './client/public/index.html'))
+    res.sendFile(path.join(__dirname + '/client/public/index.html'))
   });
 
 app.listen(PORT, ()=> {
