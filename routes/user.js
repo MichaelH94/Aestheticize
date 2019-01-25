@@ -4,7 +4,7 @@ const userControl = require('../controllers/user.js')
 const passport = require('../passport')
 
 
-router.route('/create').post(userControl.create)
+router.route('/api/create').post(userControl.create)
 
 router.post('/login', (req, res)=> {
         console.log('logged in', req.user);

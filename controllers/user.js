@@ -1,9 +1,13 @@
-const db = require('../models')
+const db = require('../models/user.js')
 
-module.exports =  {
-    create: function (req, res)  {
-        db.user
+const userControl = {
+    create: (req, res) => {
+        console.log(req.body)
+        db
         .create(req.body)
-        .then(dbModel => res.json(dbModel))
+        .then(data => res.json(data))
+        .catch(err => console.log(err));
     }
 }
+
+module.exports = userControl

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap"
 import logo from '../../brand.png';
 import './create.css';
-import axios from "axios";
+import API from "../../services/account.js";
+
 export default class Create extends Component {
 // import service 
     constructor() {
@@ -15,7 +16,6 @@ export default class Create extends Component {
             music: '',
             movie: '',
             game: '',  
-            redirectTo: null,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +25,7 @@ export default class Create extends Component {
     handleSubmit(event) {
         console.log("ok");
         event.preventDefault();
-        axios.add({
+      API.create({
             username: this.state.username,
             password: this.state.password,
             avatar: this.state.avatar,
@@ -34,14 +34,9 @@ export default class Create extends Component {
             favMovie: this.state.movie,
             favGame: this.state.game
             
-        }).then(res => {
-            console.log(res)
-            if (res.status === 200 ) {
-                this.setState({
-                    redrectTo: '/login'
-                })
-            }
-        })
+        }).then(response => {
+            console.log(response)
+        }).catch(err => console.log(err.response))
     }
 
     handleChange(event) {
@@ -56,7 +51,7 @@ export default class Create extends Component {
             <div className="Create">
 
             <form onSubmit={this.handleSubmit}>
-            <img src={logo} />
+            <img src={logo} alt="logo" />
 
                 <FormGroup controlId="password" bsSize="large">
                 <h2>Welcome to your Aestheticize account creation form. Aestheticize is driven by its users, so once you've got your account
@@ -114,6 +109,8 @@ export default class Create extends Component {
                     placeholder="Death Grips"
                     type="text"
                     name="music"
+                    defaultValue={this.state.music}
+                    onChange={this.handleChange}
                 />
                 </FormGroup>
 

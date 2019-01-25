@@ -12,7 +12,7 @@ class Header extends React.Component{
             <nav className="Nav">
                 <div className="Nav-menus">
                     <div className="Nav-brand">
-                        <a className="Nav-brand-logo" href="/"></a>
+                        <a className="Nav-brand-logo" href="/">Aestheticize</a>
                         
                     </div>  
                 </div>

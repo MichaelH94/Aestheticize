@@ -69,7 +69,7 @@ export default class Login extends Component {
         <div className="container">
             <div className="Login">
             <form onSubmit={this.handleSubmit}>
-            <img src={logo} />
+            <img src={logo} alt="Logo" />
                 <FormGroup controlId="username" bsSize="large">
                 <FormControl
                     autoFocus

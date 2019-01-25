@@ -16,7 +16,7 @@ const app = express();
 
 
 // Database connection
-let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoheadlines";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/Aestheticize";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
@@ -29,7 +29,7 @@ db.once("open", () => console.log("Database running."));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve up static assets (usually on heroku)
+// Static assets
 if (process.env.NODE_ENV === "production") {
   console.log('>>> Setting Static Folder client/build');
   app.use(express.static("client/build"));
@@ -48,7 +48,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session())
 
-app.use('/user', user)
+app.use(user)
 
 // Send every other request to the React app
 // Define any API routes before this runs

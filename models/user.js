@@ -36,24 +36,24 @@ let userSchema = new Schema({
     }
 });
 
-userSchema.methods = {
-    checkPassword: function (inputPassword) {
-        return bcrypt.compareSync(inputPassword, this.password)
-    },
-    hashPassword: plainTextPassword => {
-        return bcrypt.hashSync(plainTextPassword, 10)
-    }
-}
+// userSchema.methods = {
+//     checkPassword: function (inputPassword) {
+//         return bcrypt.compareSync(inputPassword, this.password)
+//     },
+//     hashPassword: plainTextPassword => {
+//         return bcrypt.hashSync(plainTextPassword, 10)
+//     }
+// }
 
-userSchema.pre('save', function(next) {
-    if(!this.password) {
-        console.log('No Password Provided @ user.js');
-    } else {
-        console.log('Hashed Password in pre-save');
-        this.password = thishashPassword(this.password)
-        next();
-    }
-})
+// userSchema.pre('save', function(next) {
+//     if(!this.password) {
+//         console.log('No Password Provided @ user.js');
+//     } else {
+//         console.log('Hashed Password in pre-save');
+//         this.password = thishashPassword(this.password)
+//         next();
+//     }
+// })
 
 let User = mongoose.model("User", userSchema);
 

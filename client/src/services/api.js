@@ -1,6 +1,9 @@
 import axios from "axios";
 
-module.export = axios.create({
+const API = axios.create({
     baseURL: '/api',
-    timeout: 1000,
-});
+    });
+       
+
+
+export default API;
