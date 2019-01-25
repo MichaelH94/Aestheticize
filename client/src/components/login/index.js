@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../services/account.js';
 import "./login.css";
 import logo from '../../brand.png';
 
@@ -30,7 +30,7 @@ export default class Login extends Component {
       event.preventDefault()
       console.log(this.state.username + " " + this.state.password)
 
-      axios.post('/user/login', {
+      API.post('/user/login', {
               username: this.state.username,
               password: this.state.password
           })
@@ -43,7 +43,7 @@ export default class Login extends Component {
                       username: response.data.username
                   })
                   this.setState({
-                      redirectTo: '/home'
+                      redirectTo: '/index'
                   })
               }
           }).catch(error => {
@@ -56,7 +56,7 @@ export default class Login extends Component {
     console.log(this.state.showCreate)
     event.preventDefault();
     this.setState({
-        redirectTo: "/createPage"
+        redirectTo: "/create"
     })
     }
 

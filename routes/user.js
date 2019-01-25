@@ -1,21 +1,20 @@
-
 const router = require("express").Router()
 const userControl = require('../controllers/user.js')
 const passport = require('../passport')
 
-
 router.route('/api/create').post(userControl.create)
 
-router.post('/login', (req, res)=> {
-        console.log('logged in', req.user);
-        passport.authenticate('local')
-        var userInfo = {
-            username: req.user.username
-        };
-        res.send(userInfo);
-    }
-)
+router.route('/login').post(userControl.login)
 
+
+router.get('/', (req, res, next) => {
+    console.log(req.user)
+    if (req.user) {
+        res.json({ user: req.user })
+    } else {
+        res.json({ user: null })
+    }
+})
 
 
 module.exports = router;

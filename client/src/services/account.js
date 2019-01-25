@@ -1,9 +1,8 @@
 import API from './api.js'
 
 const Account = {
-    getUser: (data) => API.get(`/user/${data.username}`, data),
     create: (userdata) => API.post('/create', userdata),
-    update: (post) => API.put(`/post/${post.id}`, post)
+    login: (data) => API.get.post('/login', data)
 }
 
 export default Account;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl } from "react-bootstrap"
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Redirect } from 'react-router-dom';
 import logo from '../../brand.png';
 import './create.css';
 import API from "../../services/account.js";
@@ -16,10 +17,12 @@ export default class Create extends Component {
             music: '',
             movie: '',
             game: '',  
+            redirect: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+
     }
 
     handleSubmit(event) {
@@ -35,7 +38,8 @@ export default class Create extends Component {
             favGame: this.state.game
             
         }).then(response => {
-            console.log(response)
+            console.log(response.data);
+            this.props.history.push('/')
         }).catch(err => console.log(err.response))
     }
 
@@ -43,6 +47,18 @@ export default class Create extends Component {
         this.setState({
             [event.target.name]: event.target.value
         });
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if(this.state.redirect) {
+            return <Redirect to='/'/>
+        }
     }
 
     render() {
@@ -53,7 +69,7 @@ export default class Create extends Component {
             <form onSubmit={this.handleSubmit}>
             <img src={logo} alt="logo" />
 
-                <FormGroup controlId="password" bsSize="large">
+                <FormGroup controlId="username" bsSize="large">
                 <h2>Welcome to your Aestheticize account creation form. Aestheticize is driven by its users, so once you've got your account
                   created, you can choose what content you upload. For now, we'll ask a few basic questions in order to get your connections set up. 
                   Please fill out the information below.

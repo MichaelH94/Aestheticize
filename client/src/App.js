@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from 'axios'
+import API from './services/api.js';
 import './App.css';
 import Header from './components/header';
 import Post from './components/post';
@@ -30,12 +30,11 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user').then(response => {
+    API.get('/user').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
-
         this.setState({
           loggedIn: true,
           username: response.data.user.username
@@ -55,16 +54,13 @@ class App extends Component {
       <Router>
       <div className="App">
       <Route exact path="/create" component={Create} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/" render={props =>
+      <Route exact path="/" component={Login} />
+      <Route exact path ="/index" render={props =>
       <div>
         <Header />
         <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Placeholder" image="https://i.imgur.com/4Mitiko.jpg" />
-        <Post username="GifTest" avatar="https://i.imgur.com/b1B1Epb.gif" caption="Gif Test" image="https://i.imgur.com/b1B1Epb.gif" />
-        <Post username="Lydia" avatar="https://i.imgur.com/uaCtrd8.jpg" caption="This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text.This is placeholder text." image="https://i.imgur.com/uaCtrd8.jpg" />
-        <Post username="Ian" avatar="https://i.imgur.com/PSzU2Si.jpg" caption="Placeholder text" image="https://i.imgur.com/JynDHo7.jpg" />
-        <Footer /> 
       </div> }/>
+      <Footer />
       </div>
       </Router>
       
