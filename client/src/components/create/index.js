@@ -4,7 +4,7 @@ import logo from '../../brand.png';
 import './create.css';
 import axios from "axios";
 export default class Create extends Component {
-
+// import service 
     constructor() {
         super()
         this.state = {
@@ -25,10 +25,7 @@ export default class Create extends Component {
     handleSubmit(event) {
         console.log("ok");
         event.preventDefault();
-        axios({
-            method: 'post',
-            url: '/user/create',
-            data: {
+        axios.add({
             username: this.state.username,
             password: this.state.password,
             avatar: this.state.avatar,
@@ -36,12 +33,12 @@ export default class Create extends Component {
             favMusic: this.state.music,
             favMovie: this.state.movie,
             favGame: this.state.game
-            }
+            
         }).then(res => {
             console.log(res)
             if (res.status === 200 ) {
                 this.setState({
-                    redirectTo: '/login'
+                    redrectTo: '/login'
                 })
             }
         })

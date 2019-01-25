@@ -1,7 +1,7 @@
 
 const router = require("express").Router()
-const userControl = require('../controllers')
-const passport = require('../passport/user.js')
+const userControl = require('../controllers/user.js')
+const passport = require('../passport')
 
 
 router.route('/create').post(userControl.create)
