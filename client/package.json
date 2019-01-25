@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.1.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.5",
-    "morgan": "^1.9.1",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
@@ -30,7 +25,6 @@
     "not op_mini all"
   ],
   "description": "Aestheticize is my 3rd project for the KU Coding Bootcamp. It's a social media site based on aesthetics and personality rather than material image.",
-  "main": "server.js",
   "devDependencies": {
     "ws": "3.3.2"
   },
