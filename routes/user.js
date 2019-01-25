@@ -1,30 +1,20 @@
-const express = require('express')
-const router = express.Router()
-const User = require('../models/user.js')
-const passport = require('../passport')
+
+const router = require("express").Router()
+const userControl = require('../controllers')
+const passport = require('../passport/user.js')
 
 
-router.post('/create', (req, res) => {
-    const newUser = new User({
-        username: req.username,
-        password: req.password,
-        age: req.age,
-        avatar: req.avatar,
-        music: req.music,
-        game: req.game
-    })
-    console.log("/create")
-})
+router.route('/create').post(userControl.create)
 
-// router.post('/login', (req, res)=> {
-//         console.log('logged in', req.user);
-//         passport.authenticate('local')
-//         var userInfo = {
-//             username: req.user.username
-//         };
-//         res.send(userInfo);
-//     }
-// )
+router.post('/login', (req, res)=> {
+        console.log('logged in', req.user);
+        passport.authenticate('local')
+        var userInfo = {
+            username: req.user.username
+        };
+        res.send(userInfo);
+    }
+)
 
 
 
