@@ -41,7 +41,7 @@ export default class Create extends Component {
             console.log(res)
             if (res.status === 200 ) {
                 this.setState({
-                    redirectTo: '/loginpage'
+                    redirectTo: '/login'
                 })
             }
         })

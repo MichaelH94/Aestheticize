@@ -17,7 +17,7 @@ const app = express();
 
 
 // Database connection
-let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoaesthetics";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoheadlines";
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});

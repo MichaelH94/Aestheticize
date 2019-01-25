@@ -16,15 +16,15 @@ router.post('/create', (req, res) => {
     console.log("/create")
 })
 
-router.post('/login', (req, res)=> {
-        console.log('logged in', req.user);
-        passport.authenticate('local')
-        var userInfo = {
-            username: req.user.username
-        };
-        res.send(userInfo);
-    }
-)
+// router.post('/login', (req, res)=> {
+//         console.log('logged in', req.user);
+//         passport.authenticate('local')
+//         var userInfo = {
+//             username: req.user.username
+//         };
+//         res.send(userInfo);
+//     }
+// )
 
 
 
