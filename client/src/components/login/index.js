@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../services/account.js';
 import "./login.css";
 import logo from '../../brand.png';
-
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
 
@@ -47,7 +47,6 @@ export default class Login extends Component {
   }
 
   showCreate(event) {
-    console.log(this.state.showCreate)
     event.preventDefault();
     this.setState({
         redirectTo: "/create"
@@ -55,6 +54,9 @@ export default class Login extends Component {
     }
 
     render() {
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
       return (
         <div className="container">
             <div className="Login">
@@ -90,7 +92,6 @@ export default class Login extends Component {
                 <Button className="loginbtn"
                     block
                     bsSize="large"
-                    type="submit"
                     onClick={this.showCreate}
                 >
                 Create Account
@@ -103,4 +104,5 @@ export default class Login extends Component {
         </div>
       )
     }
+}
 }

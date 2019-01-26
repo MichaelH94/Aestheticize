@@ -3,7 +3,9 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
 import logo from '../../brand.png';
 import './create.css';
-import API from "../../services/account.js";
+import Account from "../../services/account.js";
+import Post from "../../services/post.js"
+
 
 export default class Create extends Component {
 // import service 
@@ -28,7 +30,8 @@ export default class Create extends Component {
     handleSubmit(event) {
         console.log("ok");
         event.preventDefault();
-      API.create({
+
+      Account.create({
             username: this.state.username,
             password: this.state.password,
             avatar: this.state.avatar,
@@ -39,7 +42,24 @@ export default class Create extends Component {
             
         }).then(response => {
             console.log(response.data);
-            return
+
+            Post.newMusicPost({
+                username: this.state.username,
+                avatar: this.state.avatar,
+                artist: this.state.music
+            }).then(response => {
+                console.log(response.data);
+
+                Post.newGamePost({
+                    username: this.state.username,
+                    avatar: this.state.avatar,
+                    game: this.state.favGame
+                }).then(response => {
+                    console.log(response.data)
+                    this.props.history.push('/')
+                }).catch(err => console.log(err.response))
+            }).catch(err => console.log(err.response))
+
         }).catch(err => console.log(err.response))
     }
 

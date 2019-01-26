@@ -18,6 +18,14 @@ let postSchema = new Schema({
     },
     caption: {
         type: String
+    },
+    generated: {
+        type: Boolean,
+        default: false
+    },
+    sub: {
+        type: String,
+        required: true
     }
 });
 

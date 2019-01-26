@@ -1,0 +1,9 @@
+const router = require("express").Router()
+const postControl = require('../controllers/post.js');
+
+
+router.route('/api/newmusic').post(postControl.newArtistPost)
+
+router.route('/api/newgame').post(postControl.newGamePost)
+
+module.exports = router;

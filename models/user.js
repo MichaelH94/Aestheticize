@@ -1,6 +1,6 @@
 // Require Mongoose for database manipulation
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 let Schema = mongoose.Schema;
 
 // New Schema for Mongoose

@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')(session)
 
 // Route initializiations 
 const user = require('./routes/user.js')
+const posts = require('./routes/post.js')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -49,6 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 app.use(user)
+app.use(posts)
 
 // Send every other request to the React app
 // Define any API routes before this runs
