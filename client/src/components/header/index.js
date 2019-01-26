@@ -6,8 +6,12 @@ import UserBox from '../userbox';
 // Aestheticize header / logo - Should be present on all pages.
 
 class Header extends React.Component{
-
+    
     render() {
+        const username = this.props.username;
+        const avatar = this.props.avatar;
+        const age = this.props.age;
+
         return (
             <nav className="Nav">
                 <div className="Nav-menus">
@@ -16,7 +20,7 @@ class Header extends React.Component{
                         
                     </div>  
                 </div>
-                <UserBox username="Mike" age="24" avatar="https://i.imgur.com/Rqoc2Zh.jpg" />
+                <UserBox username={username} avatar={avatar} />
             </nav>
         );
     }

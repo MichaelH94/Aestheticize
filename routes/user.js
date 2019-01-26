@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const userControl = require('../controllers/user.js')
-const passport = require('../passport')
+
 
 router.route('/api/create').post(userControl.create)
 

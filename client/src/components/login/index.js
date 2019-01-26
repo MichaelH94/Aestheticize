@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import { Redirect } from 'react-router-dom';
 import API from '../../services/account.js';
 import "./login.css";
 import logo from '../../brand.png';
+
 
 export default class Login extends Component {
 
@@ -35,9 +35,12 @@ export default class Login extends Component {
               password: this.state.password
           })
           .then(response => {
-              console.log(response.data)
-              this.props.history.push('/index')
-    
+              console.log(response.data);
+              const passUser = response.data[0].username
+              const passAva = response.data[0].avatar
+              console.log(passUser)
+              console.log(passAva)
+              this.props.updateLoggedIn(passUser, passAva)
           }).catch(error => {
               console.log(error);
           })
@@ -51,11 +54,7 @@ export default class Login extends Component {
     })
     }
 
-
     render() {
-        if (this.state.redirectTo) {
-            
-        } else {
       return (
         <div className="container">
             <div className="Login">
@@ -105,4 +104,3 @@ export default class Login extends Component {
       )
     }
 }
-  }

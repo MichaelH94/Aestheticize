@@ -12,8 +12,20 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      avatar: null
     }
+    this.updateLoggedIn = this.updateLoggedIn.bind(this)
+  }
+
+updateLoggedIn = (u, a) => {
+  console.log(u, a)
+    this.setState({
+      username: u,
+      avatar: a,
+      loggedIn: true
+  })
+
   }
 
   render() {
@@ -21,12 +33,19 @@ class App extends Component {
       <Router>
       <div className="App">
       <Route exact path="/create" component={Create} />
-      <Route exact path="/" component={Login} />
-      <Route exact path ="/index" render={props =>
-      <div>
-        <Header />
-        <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" caption="Placeholder" image="https://i.imgur.com/4Mitiko.jpg" />
-      </div> }/>
+      <Route path="/" render={props => {
+        if (this.state.loggedIn) {
+          return <div>
+            <Header username = {this.state.username} avatar = {this.state.avatar}/>
+            <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" 
+            caption="Placeholder" image="https://i.imgur.com/4Mitiko.jpg" /> 
+            </div>
+        } else {
+          return <div>
+            <Login updateLoggedIn = {this.updateLoggedIn} />
+            </div>
+        }
+      }} />
       <Footer />
       </div>
       </Router>

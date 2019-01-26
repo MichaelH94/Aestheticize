@@ -39,7 +39,7 @@ export default class Create extends Component {
             
         }).then(response => {
             console.log(response.data);
-            this.props.history.push('/')
+            return
         }).catch(err => console.log(err.response))
     }
 
