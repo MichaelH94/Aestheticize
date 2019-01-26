@@ -4,7 +4,7 @@ const passport = require('../passport')
 
 router.route('/api/create').post(userControl.create)
 
-router.route('/login').post(userControl.login)
+router.route('/api/login').post(userControl.login)
 
 
 router.get('/', (req, res, next) => {

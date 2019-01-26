@@ -10,8 +10,12 @@ const userControl = {
     },
     login: (req, res) => {
         db
-        .findOne({username: req.body.username})
-        .then(data => res.json(data))
+        .find({
+            username: req.body.username,
+            password: req.body.password})
+        .then(data => 
+            res.json(data)
+        )
         .catch(err => console.log(err))
     }
 }

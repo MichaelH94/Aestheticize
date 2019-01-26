@@ -30,24 +30,15 @@ export default class Login extends Component {
       event.preventDefault()
       console.log(this.state.username + " " + this.state.password)
 
-      API.post('/user/login', {
+      API.login({
               username: this.state.username,
               password: this.state.password
           })
           .then(response => {
-              console.log('login response: ')
-              console.log(response)
-              if (response.status === 200) {
-                  this.props.updateUser({
-                      loggedIn: true,
-                      username: response.data.username
-                  })
-                  this.setState({
-                      redirectTo: '/index'
-                  })
-              }
+              console.log(response.data)
+              this.props.history.push('/index')
+    
           }).catch(error => {
-              console.log('login error: ')
               console.log(error);
           })
   }
@@ -63,7 +54,7 @@ export default class Login extends Component {
 
     render() {
         if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
+            
         } else {
       return (
         <div className="container">
