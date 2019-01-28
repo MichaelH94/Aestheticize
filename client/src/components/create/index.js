@@ -51,7 +51,7 @@ export default class Create extends Component {
             //      console.log(response.data)
             //  }).catch(err => console.log(err.response))
 
-            newPost.newMusicPost({
+            newPost.newArtistPost({
                 username: this.state.username,
                 avatar: this.state.avatar,
                 artist: this.state.music
@@ -59,7 +59,7 @@ export default class Create extends Component {
                 return;
             }).catch(err => console.log(err.response))
             this.props.history.push('/newlogin')
-        }).catch(err => console.log(err.response))
+        }).catch(err => console.log(err))
     }
 
     handleChange(event) {

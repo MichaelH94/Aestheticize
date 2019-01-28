@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Header from './components/header';
-import Post from './components/post';
+import Posts from './components/posts';
 import Login from './components/login';
 import Create from './components/create';
 import Footer from './components/footer';
@@ -38,8 +38,7 @@ updateLoggedIn = (u, a) => {
         if (this.state.loggedIn) {
           return <div>
             <Header username = {this.state.username} avatar = {this.state.avatar}/>
-            <Post username="Mike" avatar="https://i.imgur.com/Rqoc2Zh.jpg" 
-            caption="Placeholder" image="https://i.imgur.com/4Mitiko.jpg" /> 
+            <Posts username = {this.state.username} avatar = {this.state.avatar} />
             </div>
         } else {
           return <div>

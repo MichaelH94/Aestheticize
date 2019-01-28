@@ -11,6 +11,14 @@
     font-family: "Times New Roman", Times, serif;
   }
 
+  .generated {
+    border: 3px solid gold;
+  }
+
+  .user {
+    border: 3px solid black;
+  }
+
   .Post-user {
     display: flex;
     padding: 16px;

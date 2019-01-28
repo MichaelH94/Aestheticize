@@ -25,7 +25,6 @@ const postControl = {
                 generated: true,
                 sub: lfm.artist.name
             })
-
            return response;
         }).catch(err => console.log(err))
     },
@@ -52,6 +51,11 @@ const postControl = {
                 sub: response[0].name
             })
         }).catch(err => console.log(err))
+    },
+    findPosts: (req, res) => {
+        db.find({username: req.body.username})
+        .then(response => res.json(response))
+        .catch(err => console.log(err))
     }
 }
 
