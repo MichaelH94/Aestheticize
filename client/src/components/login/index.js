@@ -38,8 +38,6 @@ export default class Login extends Component {
               console.log(response.data);
               const passUser = response.data[0].username
               const passAva = response.data[0].avatar
-              console.log(passUser)
-              console.log(passAva)
               this.props.updateLoggedIn(passUser, passAva)
           }).catch(error => {
               console.log(error);

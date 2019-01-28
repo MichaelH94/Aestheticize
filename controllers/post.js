@@ -13,44 +13,43 @@ const postControl = {
         axios({
             method: 'get',
             url: lfmAPI
-        }).then(data => {
-             extraLargeImage = (element) =>{
-                return element.size === 'extralarge'
-            }
-           const artistImage = data.artist.image.find(extraLargeImage)
-              
-            artistImage = artistImage ? artistImage['#text'] : '';
+        }).then(response => {
 
+            const lfm = response.data;
+            console.log(lfm.artist.image[3]['#text'])
             db.create({
                 username: username,
                 avatar: avatar,
-                image: artistImage,
-                caption: data.artist.bio.summary || "No caption available",
+                image: lfm.artist.image[3]['#text'],
+                caption: lfm.artist.bio.summary || "No caption available",
                 generated: true,
-                sub: data.artist.name
+                sub: lfm.artist.name
             })
+
+           return response;
         }).catch(err => console.log(err))
     },
     newGamePost: (req, res) => {
         let gameTitle = req.body.game;
         const username = req.body.username;
         const avatar = req.body.avatar;
-        gameTitle = game.split(' ').join('+')
-        const igdbAPI = "https://api-endpoint.igdb.com/?search=" + gameTitle + "&fields=id,name,summary"
+        gameTitle = gameTitle.split(' ').join('+')
+        const igdbAPI = "https://api-v3.igdb.com/?search=" + gameTitle + "&fields=*"
 
-        axios.get(`${igdbAPI}${req.body.game}`, {
+        axios.get(`${igdbAPI}`, {
             headers: {
-                "user-key": "4d01877d1be45b92d86ab21fe32821c0",
+                "user-key": "99d5f08ebc3ee35b43823c7a96577fc8",
                 Accept: "application/json"
             }
-        }).then(data => {
+        }).then(response => {
+            console.log(response.data)
             db.create({
                 username: username,
                 avatar: avatar,
-                image: data[0].cover.url,
-                caption: data[0].summary || "No caption available",
+                image: response[0].cover.url,
+                caption: response[0].summary || "No caption available",
                 generated: true,
-                sub: data[0].name
+                sub: response[0].name
             })
         }).catch(err => console.log(err))
     }

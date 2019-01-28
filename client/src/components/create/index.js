@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import logo from '../../brand.png';
 import './create.css';
 import Account from "../../services/account.js";
-import Post from "../../services/post.js"
+import newPost from "../../services/post.js"
 
 
 export default class Create extends Component {
@@ -30,7 +30,6 @@ export default class Create extends Component {
     handleSubmit(event) {
         console.log("ok");
         event.preventDefault();
-
       Account.create({
             username: this.state.username,
             password: this.state.password,
@@ -42,24 +41,24 @@ export default class Create extends Component {
             
         }).then(response => {
             console.log(response.data);
+            console.log("music")
 
-            Post.newMusicPost({
+            // newPost.newGamePost({
+            //      username: this.state.username,
+            //      avatar: this.state.avatar,
+            //      game: this.state.game
+            //  }).then(response => {
+            //      console.log(response.data)
+            //  }).catch(err => console.log(err.response))
+
+            newPost.newMusicPost({
                 username: this.state.username,
                 avatar: this.state.avatar,
                 artist: this.state.music
-            }).then(response => {
-                console.log(response.data);
-
-                Post.newGamePost({
-                    username: this.state.username,
-                    avatar: this.state.avatar,
-                    game: this.state.favGame
-                }).then(response => {
-                    console.log(response.data)
-                    this.props.history.push('/')
-                }).catch(err => console.log(err.response))
+            }).then(response => { 
+                return;
             }).catch(err => console.log(err.response))
-
+            this.props.history.push('/newlogin')
         }).catch(err => console.log(err.response))
     }
 
