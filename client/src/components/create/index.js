@@ -51,11 +51,12 @@ export default class Create extends Component {
             //      console.log(response.data)
             //  }).catch(err => console.log(err.response))
 
-            newPost.newArtistPost({
+            newPost.newMusicPost({
                 username: this.state.username,
                 avatar: this.state.avatar,
                 artist: this.state.music
             }).then(response => { 
+                console.log(response)
                 return;
             }).catch(err => console.log(err.response))
             this.props.history.push('/newlogin')
