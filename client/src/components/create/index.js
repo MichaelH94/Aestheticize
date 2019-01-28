@@ -59,7 +59,7 @@ export default class Create extends Component {
                 console.log(response)
                 return;
             }).catch(err => console.log(err.response))
-            this.props.history.push('/newlogin')
+            this.props.history.push('/')
         }).catch(err => console.log(err))
     }
 

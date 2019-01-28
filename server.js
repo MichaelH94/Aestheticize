@@ -37,12 +37,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Express-session
-app.use(session({
-    secret: 'zxcv',
-    store: new MongoStore({ mongooseConnection: db }),
-    resave: false, 
-    saveUninitialized: false
-}));
+// app.use(session({
+//     secret: 'zxcv',
+//     store: new MongoStore({ mongooseConnection: db }),
+//     resave: false, 
+//     saveUninitialized: false
+// }));
 
 // Define API routes here
 // Passport

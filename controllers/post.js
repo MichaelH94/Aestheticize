@@ -24,8 +24,10 @@ const postControl = {
                 caption: lfm.artist.bio.summary || "No caption available",
                 generated: true,
                 sub: lfm.artist.name
-            })
-           return response;
+            }).then(data => {
+                console.log(data)
+            }).catch(err => console.log(err))
+          
         }).catch(err => console.log(err))
     },
     newGamePost: (req, res) => {
@@ -49,13 +51,14 @@ const postControl = {
                 caption: response[0].summary || "No caption available",
                 generated: true,
                 sub: response[0].name
-            })
+            }).then(response => res.json(response)).catch(err => console.log(err))
         }).catch(err => console.log(err))
     },
     findPosts: (req, res) => {
-        db.find({username: req.body.username})
-        .then(response => res.json(response))
-        .catch(err => console.log(err))
+        console.log(req.body.username)
+        db.find({username: req.body.username}, null, {sort: {_id: -1}}, (err, data) => {
+            console.log(data)
+        }).then(data => res.json(data)).catch(err => console.log(err))
     }
 }
 

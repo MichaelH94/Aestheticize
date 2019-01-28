@@ -6,6 +6,6 @@ router.route('/api/newmusic').post(postControl.newArtistPost)
 
 router.route('/api/newgame').post(postControl.newGamePost)
 
-router.route('/api/findposts').get(postControl.findPosts)
+router.route('/api/findposts').post(postControl.findPosts)
 
 module.exports = router;
