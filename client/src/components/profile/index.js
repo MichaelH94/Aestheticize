@@ -1,14 +1,33 @@
 import React from "react";
 import './profile.css';
 import icon from './back.png'
+import API from '../../services/post.js';
 
 class Profile extends React.Component {
     constructor() {
         super() 
-
+        this.state = {
+            recentPost1: [],
+            recentPost2: [],
+            recentPost3: []
+        }
         this.imageClick = this.imageClick.bind(this)
     }
     
+    componentDidMount() {
+        API.findPosts({
+            username: this.props.username
+        })
+        .then(response => {
+            console.log(response)
+            this.setState({
+                recentPost1: response.data[0],
+                recentPost2: response.data[1],
+                recentPost3: response.data[2]
+            })
+        }).catch(err => console.log(err))
+    }
+
     imageClick() {
         this.props.showProfile()
     }
@@ -36,11 +55,17 @@ class Profile extends React.Component {
                 Age: {age}<br />
                 </div>
                 <div className="favorites">
-                <p>Favorite Movie: <br /><span className="favoritething">{favMovie}</span></p>
-                <p>Favorite Artist: <br />{favMusic}</p>
-                <p>Favorite Game: <br />{favGame}</p></div>
+                <p>Movie <br /><span className="favoritething">{favMovie}</span></p>
+                <p>Artist <br /><span className="favoritething">{favMusic}</span></p>
+                <p>Game <br /><span className="favoritething">{favGame}</span></p>
                 </div>
-                 
+                Most Recent Posts
+                <div className="recentPosts">
+                <img src={this.state.recentPost1.image} id={'#' + this.state.recentPost1.sub} alt="Recent Post 1" />
+                <img src={this.state.recentPost2.image} id={'#' + this.state.recentPost2.sub} alt="Recent Post 2" />
+                <img src={this.state.recentPost3.image} id={'#' + this.state.recentPost3.sub} alt="Recent Post 3" />
+                </div>
+                </div>
             </div>
 
         );
