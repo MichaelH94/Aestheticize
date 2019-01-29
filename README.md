@@ -6,6 +6,8 @@ Demo [here](https://aestheticize.herokuapp.com/).
 ### Aestheticize is, in theory, a dynamically generated social media application designed around exploring one's tastes and comparing them to others. Aestheticize is a portmanteau of Aestheticcs and Synthesize - our goal is to generate your aesthetics, and match them with other similar users.
 -- Aestheticize is my third project for the KU Coding Bootcamp
 
+-- Aestheticize is currently in very early production, thus some features are unavailable. They'll be coming soon.
+
 ## Current Features
 #### Account Creation
 ![creation](https://i.imgur.com/LfSohcZ.png)
