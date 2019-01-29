@@ -13,19 +13,34 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      avatar: null
+      age: null,
+      avatar: null,
+      showPosts: true
     }
     this.updateLoggedIn = this.updateLoggedIn.bind(this)
+    this.showPosts = this.showPosts.bind(this)
   }
 
-updateLoggedIn = (u, a) => {
-  console.log(u, a)
+updateLoggedIn = (u, a, a2) => {
+  console.log(u, a, a2)
     this.setState({
       username: u,
       avatar: a,
+      age: a2,
       loggedIn: true
   })
+  }
 
+  showPosts() {
+    if(this.state.showPosts) {
+      this.setState({
+        showPosts: false
+      })
+    } else {
+      this.setState({
+        showPosts: true
+      })
+    }
   }
 
   render() {
@@ -33,12 +48,13 @@ updateLoggedIn = (u, a) => {
       <Router>
       <div className="App">
       <Route exact path="/create" component={Create} />
-      
       <Route path="/" render={props => {
         if (this.state.loggedIn) {
           return <div>
-            <Header username = {this.state.username} avatar = {this.state.avatar}/>
-            <Posts username = {this.state.username} avatar = {this.state.avatar} />
+            <Header username = {this.state.username} avatar = {this.state.avatar} age= {this.state.age} showPosts = {this.showPosts} />
+            <br /> <br /> <br />
+            {this.state.showPosts ? <Posts username = {this.state.username} avatar = {this.state.avatar} /> : ""}
+            <br />
             </div>
         } else {
           return <div>
@@ -46,8 +62,11 @@ updateLoggedIn = (u, a) => {
             </div>
         }
       }} />
+      <div className="Footer">
       <Footer />
+      </div>   
       </div>
+   
       </Router>
       
     )

@@ -13,6 +13,7 @@ class UserBox extends Component {
             showBox: false
         }
         this.showBox = this.showBox.bind(this)
+        this.imageClick = this.imageClick.bind(this)
     }
     showBox() {
         if (this.state.showBox) {
@@ -25,6 +26,10 @@ class UserBox extends Component {
             })
         }
     }
+
+    imageClick() {
+        this.props.showProfile()
+    }
     
     render() {
         const username = this.props.username;
@@ -36,7 +41,7 @@ class UserBox extends Component {
                 <img  className="avatar" src={avatar} alt={username} />
                 <h3>{username}</h3> <br />
             <div className="ub-icons">
-                <img className="icon" alt="Profile" src={icon1} />
+                <img className="icon" alt="Profile" src={icon1} onClick={this.imageClick} />
                 <img className="icon" alt="Connections" src={icon2} />
                 <img className="icon" alt="Settings" src={icon3} />
             </div>
