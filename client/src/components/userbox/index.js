@@ -3,9 +3,28 @@ import "./userbox.css";
 import icon1 from "./profile.png";
 import icon2 from "./connections.png";
 import icon3 from "./settings.png";
+import NewMusic from "../newmusic";
 
 
 class UserBox extends Component {
+    constructor() {
+        super() 
+        this.state = {
+            showBox: false
+        }
+        this.showBox = this.showBox.bind(this)
+    }
+    showBox() {
+        if (this.state.showBox) {
+            this.setState({
+                showBox: false
+            })
+        } else {
+            this.setState({
+                showBox: true
+            })
+        }
+    }
     
     render() {
         const username = this.props.username;
@@ -21,12 +40,16 @@ class UserBox extends Component {
                 <img className="icon" alt="Connections" src={icon2} />
                 <img className="icon" alt="Settings" src={icon3} />
             </div>
+            <div className="addMore">
+                <button className="addMusic" onClick={this.showBox}>+</button>
             </div>
-
-
-
+            {this.state.showBox ? <NewMusic showBox = {this.showBox} username = {this.props.username} avatar = {this.props.avatar} /> : "" }
+            
+            </div> 
+        
         </div>
-        </div>)
+        </div>
+        )
     }
 }
 

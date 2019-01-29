@@ -1,0 +1,33 @@
+.newMusic input {
+  background-color: #238659;
+  border: 2px solid black;
+  color: white;
+  width: 120px;
+  height: 30px;
+  margin: 8px;
+  padding: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.newMusic button {
+    width: 60px;
+    height: 24px;
+    border: 2px solid black;
+    margin: auto;
+    padding: auto;
+    display: block;
+    align-content: center;
+    background-color: #238659;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.5s ease;
+  }
+
+  .newMusic button:hover {
+    background-color: #3d9970;
+    opacity: 90%;
+    color: black;
+  }

@@ -59,6 +59,12 @@ const postControl = {
         db.find({username: req.body.username}, null, {sort: {_id: -1}}, (err, data) => {
             console.log(data)
         }).then(data => res.json(data)).catch(err => console.log(err))
+    },
+    newUserPost: (req, res) => {
+        console.log(req.body)
+        db.create(req.body)
+        .then(data => res.json(data))
+        .catch(err=> console.log(err))
     }
 }
 

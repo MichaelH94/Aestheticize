@@ -33,7 +33,7 @@ updateLoggedIn = (u, a) => {
       <Router>
       <div className="App">
       <Route exact path="/create" component={Create} />
-      {/* <Route exact path="/newlogin" component={Login} /> */}
+      
       <Route path="/" render={props => {
         if (this.state.loggedIn) {
           return <div>

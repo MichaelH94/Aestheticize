@@ -5,8 +5,8 @@
     background-color: #206060;
     margin-left: 20%;
     margin-right: 35%;
-    margin-top: 20px;
-    max-width: 55vh;
+    margin-top: 3%;
+    width: 55vh;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-family: "Times New Roman", Times, serif;
@@ -14,6 +14,14 @@
 
   .generated {
     border: 3px solid gold;
+  }
+
+  .generated img {
+    transition: 0.5s ease;
+  }
+  
+  .generated img:hover {
+    opacity: 0.3;
   }
 
   .user {
@@ -59,11 +67,6 @@
     font-weight: bold;
   }
 
-  .vjs-fade-out {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-  }
 
   @media only screen and (max-width: 600px) {
     .Post {

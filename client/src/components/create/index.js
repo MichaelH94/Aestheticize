@@ -43,6 +43,15 @@ export default class Create extends Component {
             console.log(response.data);
             console.log("music")
 
+            newPost.newUserPost({
+                username: this.state.username,
+                avatar: this.state.avatar,
+                image: "https://i.imgur.com/L8FLoM2.jpg",
+                caption: "This image was generated due to a rendering error with the current beta build of Aestheticize.",
+                generated: false,
+                sub: "placeholder"
+            }).then(response => console.log(response)).catch(err => console.log(err))
+
             // newPost.newGamePost({
             //      username: this.state.username,
             //      avatar: this.state.avatar,
@@ -58,7 +67,7 @@ export default class Create extends Component {
             }).then(response => { 
                 console.log(response)
                 return;
-            }).catch(err => console.log(err.response))
+            }).catch(err => console.log(err))
             this.props.history.push('/')
         }).catch(err => console.log(err))
     }

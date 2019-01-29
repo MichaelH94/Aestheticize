@@ -8,7 +8,7 @@
     background-color: #206060;
     margin-right: 3%;
     width: 355px;
-    height: 410px;
+    height: 480px;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-family: "Times New Roman", Times, serif;
@@ -51,4 +51,27 @@
       .UserBox {
     display: none;
       }
+  }
+
+  .addMore {
+    display: block;
+    align-content: center;
+    padding: 10px;
+  }
+
+  .addMusic {
+    background-color: #2ECC40;
+    border: solid #01FF70;
+    border-radius: 2px;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    font-weight: bolder;
+    font-size: 25px;
+    transition: 0.5s ease;
+  }
+
+  .addMusic:hover {
+    background-color: #01FF70;
+    border: solid black;
+    color: black;
   }

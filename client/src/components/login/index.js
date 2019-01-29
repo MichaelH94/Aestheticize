@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import API from '../../services/account.js';
+import Account from '../../services/account.js';
 import "./login.css";
 import logo from '../../brand.png';
 import { Redirect } from 'react-router-dom';
@@ -30,14 +30,14 @@ export default class Login extends Component {
       event.preventDefault()
       console.log(this.state.username + " " + this.state.password)
 
-      API.login({
+      Account.login({
               username: this.state.username,
               password: this.state.password
           })
           .then(response => {
-              console.log(response.data);
-              const passUser = this.state.username
-              const passAva = this.state.avatar
+              console.log(response);
+              const passUser = response.data[0].username;
+              const passAva = response.data[0].avatar;
               this.props.updateLoggedIn(passUser, passAva)
           }).catch(error => {
               console.log(error);

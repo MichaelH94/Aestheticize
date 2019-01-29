@@ -45,6 +45,7 @@
     color: #fff;
     border-radius: 5px;
     font-weight: bold;
+    transition: 0.5s ease;
   }
   
   .Create button:hover {
