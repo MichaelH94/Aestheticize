@@ -14,7 +14,7 @@
 }
 
 .Profile {
-    width: 80%;
+    width: auto;
     height: auto;
     border: 2px solid black;
     border-radius: 2%;
@@ -25,8 +25,8 @@
 }
 
 .pAvatar {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     margin: 4px auto;
 }
 
