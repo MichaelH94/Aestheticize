@@ -18,7 +18,8 @@ class App extends Component {
       avatar: null,
       showPosts: true,
       artist: null,
-      related: false
+      related: false,
+      hideBox: false
     }
     this.updateLoggedIn = this.updateLoggedIn.bind(this)
     this.showPosts = this.showPosts.bind(this)
@@ -48,14 +49,23 @@ updateLoggedIn = (u, a, a2) => {
   }
 
   showRelated(a) {
-    if(this.state.showPosts) {
+    if(!this.state.related) {
       this.setState({
         showPosts: false,
         related: true,
-        artist: a
-      })
+        artist: a,
+        hideBox: true
+      }) 
+      } else {
+        this.setState({
+          showPosts: true,
+          related: false,
+          hideBox: false
+        })
+      }
     }
-  }
+
+
 
   render() {
     return (
@@ -64,11 +74,12 @@ updateLoggedIn = (u, a, a2) => {
       <Route exact path="/create" component={Create} />
       <Route path="/" render={props => {
         if (this.state.loggedIn) {
-          return <div>
-            <Header username = {this.state.username} avatar = {this.state.avatar} age= {this.state.age} showPosts = {this.showPosts} showRelated = {this.showRelated} />
+          return <div> 
+           <Header username = {this.state.username} avatar = {this.state.avatar} age= {this.state.age} showPosts = {this.showPosts} 
+           showRelated = {this.showRelated} hideBox={this.state.hideBox}  />  
             <br /> <br /> <br />
             {this.state.showPosts ? <Posts username = {this.state.username} avatar = {this.state.avatar} showRelated = {this.showRelated} /> : ""}
-            {this.state.related ? <Related artist = {this.state.a} /> : ""}
+            {this.state.related ? <Related artist = {this.state.artist} showRelated={this.showRelated} username={this.state.username} avatar={this.state.avatar} /> : ""}
             <br />
             </div>
         } else {

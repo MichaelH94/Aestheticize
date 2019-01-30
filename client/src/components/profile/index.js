@@ -28,9 +28,11 @@ class Profile extends React.Component {
         }).catch(err => console.log(err))
     }
 
-    imageClick(a) {
-        this.props.showProfile(a)
+    imageClick() {
+        this.props.showProfile()
     }
+
+
 
     render() {
         let username = this.props.username;
@@ -63,17 +65,17 @@ class Profile extends React.Component {
                 <div className="recentPosts">
                 {this.state.recentPost1.generated ? 
                 <img src={this.state.recentPost1.image} 
-                onClick ={this.props.imageClick(this.state.recentPost2.sub)} alt="Recent Post 1" /> :
+                 alt="Recent Post 1" /> :
                 <img src={this.state.recentPost1.image} alt="Recent Post 1" /> }
 
                 {this.state.recentPost2.generated ? 
                 <img src={this.state.recentPost2.image} 
-                onClick ={this.props.imageClick(this.state.recentPost2.sub)} alt="Recent Post 2" /> :
+                 alt="Recent Post 2" /> :
                 <img src={this.state.recentPost2.image} alt="Recent Post 2" /> }
 
                 {this.state.recentPost3.generated ? 
                 <img src={this.state.recentPost3.image} 
-                onClick ={this.props.imageClick(this.state.recentPost3.sub)} alt="Recent Post 3" /> :
+                alt="Recent Post 3" /> :
                 <img src={this.state.recentPost3.image} alt="Recent Post 3" /> }
                 
                 </div>

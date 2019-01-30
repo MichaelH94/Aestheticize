@@ -1,0 +1,39 @@
+.backbtn {    
+    left: 0;
+    top: 0;
+    padding: 6px;
+    position: absolute;
+    z-index: 3;
+    transition: 0.5s ease;
+}
+
+.backbtn:hover {
+    opacity: 0.3
+}
+
+.relatedArtists {
+    display: flex;
+    margin: auto;
+    height: 80vh;
+    align-self: center;
+}
+
+.relatedArtistbox {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.relatedArtistbox img {
+    border: 1px solid gold;
+    transition: 0.5s ease;
+}
+
+.relatedArtistbox img:hover {
+    opacity: 0.3
+}
+

@@ -10,7 +10,7 @@ class Posts extends Component {
         this.state = {
             posts: []
         }
-        this.imageClick = this.imageClick.bind(this)
+        this.postsClick = this.postsClick.bind(this)
     }
     
     componentDidMount() { 
@@ -29,8 +29,10 @@ class Posts extends Component {
         })
     }
 
-    imageClick(a) {
-        this.props.showRelated(a)
+    postsClick = (a) => {
+        console.log('posts/index')
+        console.log(a.sub)
+        this.props.showRelated(a.sub)
     }
 
     render() {
@@ -38,7 +40,7 @@ class Posts extends Component {
         {this.state.posts
             .map(posts => (
                 <Post username = {posts.username} avatar = {this.props.avatar} image = {posts.image} 
-                generated = {posts.generated} sub = {posts.sub} caption = {posts.caption} imageClick = {this.imageClick} />
+                generated = {posts.generated} sub = {posts.sub} caption = {posts.caption} postClick = {this.postsClick} />
               
             ))}
         </div>

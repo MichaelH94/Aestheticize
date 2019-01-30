@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import "./post.css";
 
 class Post extends Component {
+
+    constructor() {
+        super()
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(a) {
+        this.props.postClick(a)
+    }
     
     render() {
         let username = this.props.username;
@@ -25,7 +34,7 @@ class Post extends Component {
         </header>
         <div className="Post-image">
             <div className="Post-image-bg">
-                {generated ? <img alt={caption} src={image} onClick = {this.props.imageClick({sub})} /> : 
+                {generated ? <img alt={caption} src={image} onClick={() => this.handleClick({sub})} /> : 
                 <img alt={caption} src={image} id={'#' + {sub}} />  }
             </div>
             <div className="Post-caption">

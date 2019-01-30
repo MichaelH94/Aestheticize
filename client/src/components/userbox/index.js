@@ -4,26 +4,43 @@ import icon1 from "./profile.png";
 import icon2 from "./connections.png";
 import icon3 from "./settings.png";
 import NewMusic from "../newmusic";
+import NewUserPost from "../newuserpost"
 
 
 class UserBox extends Component {
     constructor() {
         super() 
         this.state = {
-            showBox: false
+            showArtistBox: false,
+            showUserBox: false
         }
-        this.showBox = this.showBox.bind(this)
+        this.showArtistBox = this.showArtistBox.bind(this)
+        this.showUserBox = this.showUserBox.bind(this)
         this.imageClick = this.imageClick.bind(this)
     }
     
-    showBox() {
-        if (this.state.showBox) {
+    showArtistBox() {
+        if (this.state.showArtistBox) {
             this.setState({
-                showBox: false
+                showArtistBox: false
             })
         } else {
             this.setState({
-                showBox: true
+                showArtistBox: true,
+                showUserBox: false
+            })
+        }
+    }
+
+    showUserBox() {
+        if (this.state.showUserBox) {
+            this.setState({
+                showUserBox: false
+            })
+        } else {
+            this.setState({
+                showUserBox: true,
+                showArtistBox: false
             })
         }
     }
@@ -47,10 +64,11 @@ class UserBox extends Component {
                 <img className="icon" alt="Settings" src={icon3} />
             </div>
             <div className="addMore">
-                <button className="addMusic" onClick={this.showBox}>+</button>
+                <button className="addMusic" onClick={this.showArtistBox}>+</button>
+                <button className="addUserPost" onClick={this.showUserBox}>+</button>
             </div>
-            {this.state.showBox ? <NewMusic showBox = {this.showBox} username = {this.props.username} avatar = {this.props.avatar} /> : "" }
-            
+            {this.state.showArtistBox ? <NewMusic showArtistBox = {this.showArtistBox} username = {this.props.username} avatar = {this.props.avatar} /> : "" }
+            {this.state.showUserBox ? <NewUserPost showUserBox = {this.showUserBox} username = {this.props.username} avatar = {this.props.avatar} /> : "" }
             </div> 
         
         </div>
