@@ -19,6 +19,7 @@ class Header extends React.Component{
             showProfile: false
         }
         this.showProfile = this.showProfile.bind(this)
+        this.imageClick = this.imageClick.bind(this)
     }
     
     componentDidMount() {
@@ -55,6 +56,10 @@ class Header extends React.Component{
         }
         
     }
+
+    imageClick(a) {
+        this.props.showRelated(a)
+    }
     
     render() {
         return (
@@ -67,7 +72,7 @@ class Header extends React.Component{
                 </div>
                 {this.state.showUserBox ? <UserBox username={this.props.username} avatar={this.props.avatar} age={this.props.age} showProfile={this.showProfile} /> : ""}
                 {this.state.showProfile ? <Profile username = {this.state.username} avatar={this.state.avatar} age = {this.state.age}
-                favMusic = {this.state.favMusic} favGame = {this.state.favGame} favMovie = {this.state.favMovie} showProfile={this.showProfile} /> : ""}
+                favMusic = {this.state.favMusic} favGame = {this.state.favGame} favMovie = {this.state.favMovie} showProfile={this.showProfile} imageClick ={this.imageClick} /> : ""}
             </nav>
         );
     }

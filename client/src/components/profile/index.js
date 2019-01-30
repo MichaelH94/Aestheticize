@@ -28,8 +28,8 @@ class Profile extends React.Component {
         }).catch(err => console.log(err))
     }
 
-    imageClick() {
-        this.props.showProfile()
+    imageClick(a) {
+        this.props.showProfile(a)
     }
 
     render() {
@@ -61,9 +61,21 @@ class Profile extends React.Component {
                 </div>
                 Most Recent Posts
                 <div className="recentPosts">
-                <img src={this.state.recentPost1.image} id={'#' + this.state.recentPost1.sub} alt="Recent Post 1" />
-                <img src={this.state.recentPost2.image} id={'#' + this.state.recentPost2.sub} alt="Recent Post 2" />
-                <img src={this.state.recentPost3.image} id={'#' + this.state.recentPost3.sub} alt="Recent Post 3" />
+                {this.state.recentPost1.generated ? 
+                <img src={this.state.recentPost1.image} 
+                onClick ={this.props.imageClick(this.state.recentPost2.sub)} alt="Recent Post 1" /> :
+                <img src={this.state.recentPost1.image} alt="Recent Post 1" /> }
+
+                {this.state.recentPost2.generated ? 
+                <img src={this.state.recentPost2.image} 
+                onClick ={this.props.imageClick(this.state.recentPost2.sub)} alt="Recent Post 2" /> :
+                <img src={this.state.recentPost2.image} alt="Recent Post 2" /> }
+
+                {this.state.recentPost3.generated ? 
+                <img src={this.state.recentPost3.image} 
+                onClick ={this.props.imageClick(this.state.recentPost3.sub)} alt="Recent Post 3" /> :
+                <img src={this.state.recentPost3.image} alt="Recent Post 3" /> }
+                
                 </div>
                 </div>
             </div>

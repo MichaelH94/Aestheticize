@@ -15,6 +15,7 @@ class UserBox extends Component {
         this.showBox = this.showBox.bind(this)
         this.imageClick = this.imageClick.bind(this)
     }
+    
     showBox() {
         if (this.state.showBox) {
             this.setState({

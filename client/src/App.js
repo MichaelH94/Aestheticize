@@ -6,6 +6,7 @@ import Posts from './components/posts';
 import Login from './components/login';
 import Create from './components/create';
 import Footer from './components/footer';
+import Related from './components/related';
 
 class App extends Component {
   constructor() {
@@ -15,10 +16,13 @@ class App extends Component {
       username: null,
       age: null,
       avatar: null,
-      showPosts: true
+      showPosts: true,
+      artist: null,
+      related: false
     }
     this.updateLoggedIn = this.updateLoggedIn.bind(this)
     this.showPosts = this.showPosts.bind(this)
+    this.showRelated = this.showRelated.bind(this)
   }
 
 updateLoggedIn = (u, a, a2) => {
@@ -43,6 +47,16 @@ updateLoggedIn = (u, a, a2) => {
     }
   }
 
+  showRelated(a) {
+    if(this.state.showPosts) {
+      this.setState({
+        showPosts: false,
+        related: true,
+        artist: a
+      })
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -51,9 +65,10 @@ updateLoggedIn = (u, a, a2) => {
       <Route path="/" render={props => {
         if (this.state.loggedIn) {
           return <div>
-            <Header username = {this.state.username} avatar = {this.state.avatar} age= {this.state.age} showPosts = {this.showPosts} />
+            <Header username = {this.state.username} avatar = {this.state.avatar} age= {this.state.age} showPosts = {this.showPosts} showRelated = {this.showRelated} />
             <br /> <br /> <br />
-            {this.state.showPosts ? <Posts username = {this.state.username} avatar = {this.state.avatar} /> : ""}
+            {this.state.showPosts ? <Posts username = {this.state.username} avatar = {this.state.avatar} showRelated = {this.showRelated} /> : ""}
+            {this.state.related ? <Related artist = {this.state.a} /> : ""}
             <br />
             </div>
         } else {

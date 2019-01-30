@@ -25,7 +25,8 @@ class Post extends Component {
         </header>
         <div className="Post-image">
             <div className="Post-image-bg">
-                <img alt={caption} src={image} id={'#' + {sub}} />
+                {generated ? <img alt={caption} src={image} onClick = {this.props.imageClick({sub})} /> : 
+                <img alt={caption} src={image} id={'#' + {sub}} />  }
             </div>
             <div className="Post-caption">
                 <strong>{username}</strong> {caption}

@@ -10,6 +10,7 @@ class Posts extends Component {
         this.state = {
             posts: []
         }
+        this.imageClick = this.imageClick.bind(this)
     }
     
     componentDidMount() { 
@@ -28,12 +29,16 @@ class Posts extends Component {
         })
     }
 
+    imageClick(a) {
+        this.props.showRelated(a)
+    }
+
     render() {
         return <div>
         {this.state.posts
             .map(posts => (
                 <Post username = {posts.username} avatar = {this.props.avatar} image = {posts.image} 
-                generated = {posts.generated} sub = {posts.sub} caption = {posts.caption} />
+                generated = {posts.generated} sub = {posts.sub} caption = {posts.caption} imageClick = {this.imageClick} />
               
             ))}
         </div>
